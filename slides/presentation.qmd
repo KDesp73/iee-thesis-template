@@ -1,0 +1,258 @@
+---
+title: "Your Diploma Thesis Title"
+subtitle: "Thesis Presentation"
+author: "Your Full Name"
+institute: "International Hellenic University"
+date: today
+lang: en
+bibliography: ../src/bib.bib
+format:
+  beamer:
+    pdf-engine: xelatex
+    latex-tinytex: true
+    slide-level: 3
+    theme: gotham
+    slide-number: true
+    footer: "Your Diploma Thesis Title"
+    include-in-header:
+      - text: |
+          \makeatletter
+          \@ifundefined{figure*}{\newenvironment{figure*}{\begin{figure}}{\end{figure}}}{}
+          \@ifundefined{table*}{\newenvironment{table*}{\begin{table}}{\end{table}}}{}
+          \makeatother
+          \input{fonts.tex}
+          \usepackage{pgfplots}
+          \pgfplotsset{compat=1.18}
+          \usepackage{booktabs}
+          \usepackage{siunitx}
+          \usepackage{tikz}
+          \usetikzlibrary{arrows.meta,calc,positioning,shapes.geometric,fit,backgrounds}
+          \usepackage{adjustbox}
+          \usepackage{tabularx}
+
+          \usefonttheme{default}
+
+          \gothamset{
+            sectionframe default=on,
+            sectiontocframe default=on,
+            subsectionframe default=off,
+            subsectiontocframe default=off,
+            subsubsectionframe default=off,
+            numbering=framenumber
+          }
+          \renewcommand{\secContentName}{Section Contents}
+          \renewcommand{\subsecContentName}{Subsection Contents}
+          \renewcommand{\subsubsecContentName}{Sub-subsection Contents}
+          \renewcommand{\partContentName}{Part Contents}
+
+          \renewcommand{\sectionTocOptions}{
+            currentsection,
+            currentsubsection,
+            hideothersubsections,
+            sectionstyle=show/shaded,
+            subsectionstyle=show/show/hide,
+            subsubsectionstyle=show/show/hide
+          }
+execute:
+  echo: false
+---
+
+
+# Introduction
+
+## Problem Statement
+
+- The problem you are addressing is significant
+  - It has real-world impact and relevance
+  - Existing approaches have limitations
+- This motivates the need for a new solution
+- Your work aims to fill this gap
+
+## Objectives
+
+### Research Goal
+
+Describe the main objective of your thesis:
+
+- First key objective
+- Second key objective
+- Third key objective
+
+### Contribution
+
+What is the novel contribution of this work?
+
+# Background
+
+## Related Work
+
+### Existing Approaches
+
+Overview of prior research:
+
+- **Approach A**: Brief description and limitations
+- **Approach B**: Brief description and limitations
+- **Approach C**: Brief description and limitations
+
+Your work improves upon these by...
+
+## Theoretical Foundations
+
+### Key Concepts
+
+Introduce the necessary theory:
+
+1. First concept with explanation
+2. Second concept with explanation
+3. Third concept with explanation
+
+Mathematical formulation if needed:
+
+$$
+f(x) = \int_{-\infty}^{\infty} \hat{f}(\xi) e^{2\pi i \xi x} d\xi
+$$
+
+### Important Result
+
+A key theorem or lemma that underpins your work.
+
+# Methodology
+
+## Proposed Approach
+
+### Architecture Overview
+
+- Component 1: Description of the first component
+- Component 2: Description of the second component
+- Component 3: Description of the third component
+
+### Algorithm Details
+
+**Step 1:** Preprocessing
+
+$$
+\text{output} = \text{transform}(\text{input})
+$$
+
+**Step 2:** Core computation
+
+```
+pseudocode_of_algorithm(input):
+    result = initial_value
+    for item in input:
+        result += process(item)
+    return result
+```
+
+**Step 3:** Post-processing and evaluation
+
+## Implementation
+
+### Tools and Technologies
+
+- **Language / Framework**: version X.Y
+- **Libraries**: lib1, lib2, lib3
+- **Hardware**: specifications
+
+### Code Example
+
+```python
+def example_function(param1, param2):
+    """Example of a function used in implementation."""
+    result = param1 * param2
+    return result
+```
+
+# Experiments
+
+## Experimental Setup
+
+### Datasets
+
+| Dataset | Size | Description |
+|---------|------|-------------|
+| Dataset A | 1,000 samples | Description A |
+| Dataset B | 5,000 samples | Description B |
+
+### Evaluation Protocol
+
+- Baseline methods used for comparison
+- Metrics: accuracy, precision, recall, F1-score
+- Cross-validation strategy
+
+## Results
+
+### Quantitative Results
+
+| Method | Accuracy | Precision | Recall | F1 |
+|--------|----------|-----------|--------|-----|
+| Baseline | XX% | XX% | XX% | XX% |
+| Ours | **YY%** | **YY%** | **YY%** | **YY%** |
+
+### Qualitative Results
+
+::: {.column-margin}
+Insert figure or diagram here (`../assets/example.png`)
+:::
+
+Key observations from the results:
+
+- Our method outperforms baselines in metric A
+- Improvement is statistically significant ($p < 0.05$)
+- Trade-off observed in edge cases
+
+## Ablation Study
+
+### Component Analysis
+
+| Configuration | Performance |
+|---------------|-------------|
+| Full model | **YY%** |
+| Without component A | YY% |
+| Without component B | YY% |
+
+Each component contributes positively to overall performance.
+
+# Conclusion
+
+## Summary
+
+### Key Findings
+
+1. **Finding 1**: Most important result from your work
+2. **Finding 2**: Second most important result
+3. **Finding 3**: Third most important result
+
+### Contributions
+
+- **Contribution 1**: What was achieved
+- **Contribution 2**: What was achieved
+- **Contribution 3**: What was achieved
+
+## Future Work
+
+### Short-term
+
+- Immediate extensions and improvements
+
+### Long-term
+
+- Broader research directions enabled by this work
+
+---
+
+## Thank You
+
+### Questions?
+
+Your Full Name -- `email@ihu.gr`
+
+- [GitHub Repository](https://github.com/your-username/your-repo)
+- [Project Website](https://your-project-website.com)
+
+::: notes
+Thank the committee for their attention. Be prepared for questions about:
+- Methodology choices
+- Limitations of the approach
+- Potential extensions
+:::

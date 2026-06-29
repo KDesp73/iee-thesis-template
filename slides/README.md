@@ -18,7 +18,7 @@ To preview while editing:
 quarto preview slides/presentation.qmd
 ```
 
-The deck uses the thesis bibliography at `../src/bib.bib`, Beamer `Madrid` with the local color theme `beamercolorthemechess.sty` (`colortheme: chess` in the YAML).
+The deck uses the thesis bibliography at `../src/bib.bib`, the Beamer `gotham` theme with the local color theme `beamercolorthemechess.sty`.
 
 ## Suggested Editing Flow
 

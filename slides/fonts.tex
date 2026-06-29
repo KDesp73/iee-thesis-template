@@ -1,0 +1,20 @@
+% Local fonts from ../fonts/ (same families as src/preamble.tex).
+% Paths are relative to slides/ where Quarto runs XeLaTeX.
+\usepackage{fontspec}
+
+\setmainfont{Tinos-Regular.ttf}[
+  Path = ../fonts/,
+  BoldFont = Tinos-Bold.ttf,
+  ItalicFont = Tinos-Italic.ttf,
+  BoldItalicFont = Tinos-BoldItalic.ttf,
+]
+
+\setsansfont{Helvetica.ttf}[
+  Path = ../fonts/,
+  BoldFont = Helvetica-Bold.ttf,
+  ItalicFont = Helvetica-Oblique.ttf,
+  BoldItalicFont = Helvetica-BoldOblique.ttf,
+]
+
+% Beamer body text uses sans; Gotham titles/frames follow structure fonts.
+\usefonttheme{professionalfonts}
