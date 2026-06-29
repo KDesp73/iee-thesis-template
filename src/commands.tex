@@ -1,0 +1,26 @@
+\newcommand{\mathdefault}[1]{#1}
+
+% General figure helper
+\newcommand{\includefig}[3]{
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=#2\textwidth]{#1}
+        \caption{#3}
+        \label{fig:#1}
+    \end{figure}
+}
+
+% PGF diagram helper
+\newcommand{\diagramfig}[3]{
+    \begin{figure}[H]
+        \centering
+        \resizebox{\textwidth}{!}{\input{../assets/#1.pgf}}
+        \caption{#2}
+        \label{fig:#3}
+    \end{figure}
+}
+
+% Inline todo
+\newcommand{\todo}[1]{
+    \paragraph{\color{red}\scriptsize\textbf{TODO:} #1}%
+}

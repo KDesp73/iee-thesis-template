@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# Poll Better BibTeX HTTP export and refresh src/bibliography.bib atomically.
+# The thesis uses src/bib.bib (see preamble.tex); merge new Zotero exports from
+# bibliography.bib into bib.bib when you add sources.
+# Run from anywhere; paths are resolved relative to the repository root.
+
+set -uo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+DEST="$ROOT/src/bibliography.bib"
+URL="${BIBSYNC_URL:-http://127.0.0.1:23119/better-bibtex/export?/library;id:1/collection;key:7MUX2JKI/irida.biblatex}"
+INTERVAL="${BIBSYNC_INTERVAL:-60}"
+PING_URL="${BIBSYNC_PING:-http://127.0.0.1:23119/connector/ping}"
+
+validate_bib() {
+	local f="$1"
+	if [[ ! -s "$f" ]]; then
+		echo "bibsync: download is empty, keeping previous bibliography." >&2
+		return 1
+	fi
+	if head -c 500 "$f" | grep -qiE '<!doctype[[:space:]]+html|<html[[:space:]]'; then
+		echo "bibsync: download looks like HTML, not BibTeX — keeping previous file." >&2
+		return 1
+	fi
+	# Reject broken BBT lines like: @article{<newline>  title = ...
+	if grep -qE '^@[A-Za-z]+\{[[:space:]]*$' "$f"; then
+		echo "bibsync: export has @type{ without citation key (check BBT auto-keys in Zotero); keeping previous file." >&2
+		return 1
+	fi
+	if ! grep -qE '^@[A-Za-z]+\{[^[:space:],]+,' "$f"; then
+		echo "bibsync: no well-formed @type{key, lines found; keeping previous file." >&2
+		return 1
+	fi
+	return 0
+}
+
+echo "Bibliography sync → $DEST (every ${INTERVAL}s). Stop with Ctrl+C."
+
+while true; do
+	if curl -sS --head --max-time 5 "$PING_URL" | grep -q "200 OK"; then
+		TMP="$(mktemp "${DEST}.XXXXXX")"
+		if curl -fsSL --max-time 120 "$URL" -o "$TMP" 2>/dev/null && validate_bib "$TMP"; then
+			chmod a+r "$TMP"
+			mv -f "$TMP" "$DEST"
+			echo "Updated $(basename "$DEST") at $(date '+%Y-%m-%d %H:%M:%S')"
+		else
+			rm -f "$TMP"
+		fi
+	else
+		echo "Zotero not responding on $PING_URL — retry in ${INTERVAL}s."
+	fi
+	sleep "$INTERVAL"
+done

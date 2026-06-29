@@ -1,0 +1,166 @@
+% !TEX program = xelatex
+\documentclass[twoside, a4paper, 11pt]{article}
+
+\include{preamble}
+\include{commands}
+
+\begin{document}
+
+\fancypagestyle{custom_page_style}{
+    \fancyhf{}
+    \fancyhead[RO]{\nouppercase{\leftmark}}
+    \fancyhead[LE]{Chapter \thesection}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+\begin{titlepage}
+
+    \newcommand{\HRule}{\rule{\linewidth}{0.6mm}}
+    \center
+    \includegraphics[scale=0.6]{ihu-logo-gr.png}\\[1cm]
+
+    \textsc{\huge SCHOOL OF ENGINEERING}\\
+
+    \setstretch{1.5}
+    \textsc{\huge Department of Information and Electronic Engineering}\\[1.5cm]
+
+    \textsc{\huge DIPLOMA THESIS}\\[0.2cm]
+    {\huge \insertTitle}\\[1cm]
+
+    \setstretch{1}
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushleft} \large
+            \textbf{Student}
+            \\\textbf{\insertStudent}
+            \\\textbf{Student ID: \insertStudentID}
+        \end{flushleft}
+    \end{minipage}
+    ~
+    \begin{minipage}{0.45\textwidth}
+        \begin{flushright} \large
+            \textbf{Supervisor}
+            \\\textbf{\insertSupervisor}
+            \\\textbf{\insertSupervisorTitle}
+        \end{flushright}
+    \end{minipage}\\[1cm]
+
+    {\large \today}\\[2cm]
+
+\end{titlepage}
+
+\clearpage
+
+\pagenumbering{roman}
+\thispagestyle{empty}
+
+\renewcommand{\abstractname}{}
+\begin{abstract}
+
+    \begin{center}
+        \begin{minipage}{0.9\textwidth}
+            \centerline{Title of Dissertation: \insertTitle}
+            \centerline{Code of Dissertation: \insertCode}
+            \centerline{Student's full name: \insertStudent}
+            \centerline{Supervisor's full name: \insertSupervisor}
+            \centerline{Date of undertaking: \insertDateUndertaking}
+            \centerline{Date of completion: {\DTMsetdatestyle{ddmmyyyy} \today}}
+        \end{minipage}
+    \end{center}
+
+    \setlength{\parskip}{2em}
+    \emph{I hereby affirm the authorship of this paper as well as the acknowledgement and credit of whichever
+assistance I received in its composition. I have, furthermore, noted the various sources from which I extracted data, ideas, visual or written material, in paraphrase or exact quotation. Moreover, I affirm the exclusive composition of this paper by myself only, for the purpose of it being a dissertation, in the Department of Information and Electronic Engineering of the I.H.U.}
+
+    \setlength{\parskip}{1em}
+
+    \emph{This paper constitutes the intellectual property of \insertStudent, the student that composed it. According to the open-access policy, the author/composer offers the International Hellenic University authorisation to use the right to reproduce, borrow, publicly present and digitally distribute the paper globally, in electronic form and media of all kinds, for teaching or research purposes, voluntarily. Open access to the full text, by no means grants the right to trespass the intellectual property of the author/composer, nor does it authorise the reproduction, republication, duplication, selling, commercial use, distribution, publication, downloading, uploading, translation, modification of any kind, in part or summary of the paper, without the explicit written consent of the authors.}
+
+The approval of this dissertation by the Department of Information and Electronic Engineering of the International Hellenic University, does not necessarily entail the adoption of the author's views, on behalf of the Department.
+
+\end{abstract}
+
+\clearpage
+
+\begin{dedication}
+    \insertDedication
+\end{dedication}
+
+\newpage
+\thispagestyle{empty}
+\mbox{}
+
+\clearpage
+
+\include{Abstract/en}
+
+\normalsize
+\clearpage
+
+\include{Abstract/gr}
+
+\normalsize
+\clearpage
+
+\large
+\renewcommand{\abstractname}{Acknowledgments}
+\begin{abstract}
+    \phantomsection
+    \addcontentsline{toc}{subsection}{Acknowledgments}
+    \normalsize
+\insertAcknowledgments
+\end{abstract}
+\normalsize
+
+\clearpage
+\renewcommand{\contentsname}{Table of Contents}
+\phantomsection
+\addcontentsline{toc}{subsection}{Table of Contents}
+
+\small
+\tableofcontents
+
+\clearpage
+\renewcommand{\listfigurename}{Figure Catalogue}
+\phantomsection
+\addcontentsline{toc}{subsection}{Figure Catalogue}
+\listoffigures
+
+\renewcommand{\listtablename}{Table Catalogue}
+\phantomsection
+\addcontentsline{toc}{subsection}{Table Catalogue}
+\listoftables
+
+\clearpage
+
+\include{abbreviations}
+
+\clearpage
+\pagenumbering{arabic}
+
+\normalsize
+\pagestyle{custom_page_style}
+\setstretch{1.2}
+
+\titlespacing\subsection{0pt}{14pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+\titlespacing\subsubsection{0pt}{12pt plus 4pt minus 2pt}{0pt plus 2pt minus 2pt}
+
+\setlength{\parskip}{1em}
+
+\include{Chapters/01-introduction}
+\newpage
+\include{Chapters/02-background}
+\newpage
+\include{Chapters/03-chapter}
+\newpage
+
+\clearpage
+\pagestyle{plain}
+\printbibliography[heading=bibintoc, title={BIBLIOGRAPHY}]
+\clearpage
+
+\appendix
+\titleformat{\section}{\large\bfseries}{Appendix \thesection:}{1em}{}
+\include{Appendix/example}
+
+\end{document}

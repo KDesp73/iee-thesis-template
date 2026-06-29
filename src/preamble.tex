@@ -1,0 +1,150 @@
+\usepackage[top=2.5cm, left=2.5cm, right=2.5cm, bottom=2.5cm, headheight=1.25cm, footskip=1.25cm]{geometry}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+
+\setmainlanguage{english}
+\setotherlanguage{greek}
+
+\usepackage{fontspec}
+
+% 1. Serif Font: Using Tinos (Times New Roman equivalent)
+\setmainfont{Tinos-Regular.ttf}[
+    Path = ../fonts/,
+    BoldFont = Tinos-Bold.ttf,
+    ItalicFont = Tinos-Italic.ttf,
+    BoldItalicFont = Tinos-BoldItalic.ttf,
+    Script = Latin,
+]
+
+% 2. Sans Serif Font: Helvetica
+\setsansfont{Helvetica.ttf}[
+    Path = ../fonts/,
+    BoldFont = Helvetica-Bold.ttf,
+    ItalicFont = Helvetica-Oblique.ttf,
+    BoldItalicFont = Helvetica-BoldOblique.ttf,
+    Script = Latin,
+]
+
+% 3. Greek Font Families
+\newfontfamily\greekfont{Tinos-Regular.ttf}[
+    Path = ../fonts/,
+    BoldFont = Tinos-Bold.ttf,
+    ItalicFont = Tinos-Italic.ttf,
+    BoldItalicFont = Tinos-BoldItalic.ttf,
+    Script = Greek,
+]
+
+\newfontfamily\greekfontsf{Helvetica.ttf}[
+    Path = ../fonts/,
+    BoldFont = Helvetica-Bold.ttf,
+    ItalicFont = Helvetica-Oblique.ttf,
+    BoldItalicFont = Helvetica-BoldOblique.ttf,
+    Script = Greek,
+]
+
+% IEEE-style reference list (department guide)
+\usepackage[
+  backend=biber,
+  bibstyle=ieee,
+  citestyle=ieee-comp,
+  sorting=none,
+]{biblatex}
+\addbibresource{bib.bib}
+
+\usepackage{xparse}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{marginnote}
+\usepackage{amssymb}
+\usepackage{float}
+\usepackage[en-US]{datetime2}
+\usepackage{amsmath}
+\usepackage{microtype}
+\usepackage{graphicx}
+\graphicspath{ {../assets/} }
+\usepackage{adjustbox}
+\usepackage{tabularx}
+\usepackage{appendix}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{setspace}
+\usepackage{fancyhdr}
+\usepackage{url}
+\usepackage{caption}
+\usepackage{chngcntr}
+\usepackage{titlesec}
+\usepackage{amsfonts}
+\usepackage{pgf}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage{siunitx}
+\usepackage{subcaption}
+
+\usepackage{minted}
+\usemintedstyle{tango}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+    stringstyle=\color{orange},
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny\color{gray},
+    captionpos=b
+}
+
+\counterwithin{table}{section}
+\counterwithin{figure}{section}
+\captionsetup[figure]{name=Figure}
+\captionsetup[table]{name=Table}
+\setlength{\parindent}{0em}
+
+\titleformat{\section}
+{\normalfont\large\bfseries}{Chapter~\thesection:}{1em}{}
+
+\newenvironment{dedication}
+{\clearpage\thispagestyle{empty}\vspace*{\stretch{1}}\itshape\raggedleft}
+{\par\vspace{\stretch{3}}\clearpage}
+
+\renewenvironment{abstract}
+{\par\noindent\textbf{\abstractname}\\ [0.4cm] \ignorespaces}
+
+\fancypagestyle{custom_page_style}{
+    \fancyhf{}
+    \fancyhead[RO]{\nouppercase{\leftmark}}
+    \fancyhead[LE]{Chapter \thesection}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0.4pt}
+}
+
+\usepackage[
+    unicode,
+    hidelinks,
+    bookmarks=true,
+    bookmarksopen=true,
+    pdflang=en-US,
+]{hyperref}
+\usepackage{bookmark}
+\usepackage[english,capitalise,nameinlink,noabbrev]{cleveref}
+
+\hypersetup{
+    pdftitle={Your Thesis Title},
+    pdfauthor={Your Name},
+    pdfsubject={Your Subject},
+    pdfkeywords={keyword1,keyword2,keyword3},
+    pdfcreator={Your Name}
+}
+
+% ---- Metadata helpers (edit these) ----
+\newcommand{\insertTitle}{Your Diploma Thesis Title}
+\newcommand{\insertStudent}{Your Full Name}
+\newcommand{\insertStudentID}{Your Student ID}
+\newcommand{\insertSupervisor}{Supervisor's Full Name}
+\newcommand{\insertSupervisorTitle}{Professor}
+\newcommand{\insertCode}{Dissertation Code}
+\newcommand{\insertDateUndertaking}{DD-MM-YYYY}
+\newcommand{\insertDedication}{To my family}
+\newcommand{\insertAcknowledgments}{I would like to express my gratitude to...}

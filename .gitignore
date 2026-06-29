@@ -1,0 +1,60 @@
+## Core LaTeX auxiliary files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.toc
+*.xdv
+
+## Bibliography files
+src/bibliography.bib.*
+*.bbl
+*.blg
+*.run.xml
+*.bcf
+
+## Indices and Glossaries
+*.glo
+*.idx
+*.ilg
+*.ind
+*.ist
+*.glg
+*.gls
+
+## Lists of Figures/Tables
+*.lof
+*.lot
+
+## Chapter/Section auxiliary files (if using \include)
+*.out
+*.snm
+*.nav
+
+## Hyperref and bookmarks
+*.brf
+
+## Vim/Neovim specific
+*.swp
+*.swo
+*~
+tags
+.netrwhist
+
+## PDF Output
+# Usually, you want to ignore the PDF and only track the source.
+# Remove the '#' below if you want to keep your repo "source only".
+# *.pdf
+
+## VimTeX/Latexmk specific
+*.bak0
+*.bak1
+*.pdf_tex
+
+build
+.DS_Store
+src/_minted
+src/_minted-main
+
+slides/presentation_files

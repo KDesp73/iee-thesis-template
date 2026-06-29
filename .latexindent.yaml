@@ -1,0 +1,6 @@
+defaultIndent: "    "
+lookForAlignDelims:
+  tabular:
+    delims: 1
+  tabularx:
+    delims: 1
